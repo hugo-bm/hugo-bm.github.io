@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CDN -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    
+    <style type="text/css" media="screen">
+        html{
+            margin: 0;
+            padding: 0;
+        }
+        body{margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            background-color: #9e9595;}
+        .title{
+            width: 100%;height: 48px;display: flex;flex-direction: column;align-items: center;justify-content: center;margin-top: 8px;margin-bottom: 15px;
+        }
+        .title_text{
+            font-weight: 300;
+            font-size: 35px;
+            color: #737375;
+            cursor: pointer;
+        }
+        .content{
+            height: 100%;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 0.5fr 1.5fr 0.5fr;
+        }
+        .content_main{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 5px 10px;
+            margin: 3px;
+            justify-content: center;
+            align-items: center;
+        }
+        .content_main .exemple{
+            width: 480px;
+            height: 320px ;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: silver;
+            border: 20px solid #726464;
+            margin: 25px;
+        }
+        
+        
+        .in_txt {
+            display: flex;
+            flex-direction: row;
+            width: 480px;
+            height: 25px;
+        }
+        ._r{
+            float: right;
+            margin: 3px; 
+            width: 100%;
+            height: 100%;
+        }
+        ._l{
+            float: left;
+            margin: 3px;
+            width: 100%;
+            height: 100%; 
+        }
+        .num{
+            border: 1px solid #ccc7c7;
+            background: none;
+            width: 45px;
+            height: 20px;
+        }
+        .align-rigth{
+            float: right;
+        }
+        .exemple_code{
+            width: 100%;
+            height: 50%;
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .exemple_code_field{
+            width: 50%;
+            height: 50%;
+            padding: 4px;
+            background: none;
+            border: 2px solid #737375;
+            border-radius: 5px;
+            color: #ccc7c7;
+            font-weight: 400;
+            font-size: 18px;
+            margin: 3px;
+            margin-bottom: 15px;
+        }
+        .options{
+            margin-top: 15px;
+            padding: 8px;
+            border: 1px solid #777777;
+            border-radius: 20px;
+        }
+        
+    </style>
+    <meta name="description" content="CSS border radius generator.">
+    <title>Borde Radius Generator</title>
+</head>
+<body >
+    <div class="title">
+        <h1 class="title_text">Boder Radius Generator</h1>
+    </div>
+    <div class="content">
+        <div class="content_left"></div>
+        <div class="content_main">
+            <div class="in_txt ">
+                <div class="_l">
+                    <input type="number" name="" min='0' onchange="return setBorderRadius(event,0)" class="num"  id="lu-num">
+                </div>
+                <div class="_r">
+                    <input type="number" name="" min='0' onchange="setBorderRadius(event,1)" class='num align-rigth' id="ru-num">
+                </div>
+            </div>
+            <div class="exemple" id="exemple">#Exemple</div>
+            <div class="in_txt ">
+                <div class="_l">
+                    <input type="number" name="" min='0' onchange="setBorderRadius(event,3)" class="num" id="ld-num">
+                </div>
+                <div class="_r">
+                    <input type="number" name="" min='0' onchange="setBorderRadius(event,2)" class='num align-rigth'id="rd-num">
+                </div>
+            </div>
+            <div class="options">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="Checkbox1" onchange="write()" value="option1" checked>
+                    <label class="form-check-label" for="Checkbox1">Webkit</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="Checkbox2" onchange="write()" value="option2" checked>
+                    <label class="form-check-label" for="Checkbox2">Gecko</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="Checkbox3" onchange="write()" value="option3" checked>
+                    <label class="form-check-label" for="Checkbox3">CSS3</label>
+                  </div>
+            </div>
+            <div class="exemple_code">
+                <textarea type="text" class="exemple_code_field" name="" id="code"></textarea>
+                <button onclick="copy()" data-dismiss="alert" class="btn btn-success copy" >Copy to Clipperbord</button>
+            </div>
+            
+        </div>
+        <div class="content_right"></div>
+    </div>
+    <div class="footer"></div>
+
+<script type="text/javascript">
+window.onload = start();
+    function setBorderRadius(event,border){
+       let value = event.target.value;
+       switch(border){
+           case 0:
+            localStorage.setItem('lu',value);
+           break;
+           case 1:
+            localStorage.setItem('ru',value);
+           break;
+           case 2:
+            localStorage.setItem('ld',value);
+           break;
+           case 3:
+            localStorage.setItem('rd',value);
+           break;
+           
+       }
+        //document.getElementById('code').value = value;
+        write();
+    }
+    function start(){
+        localStorage.setItem('lu',0);
+        localStorage.setItem('ru',0);
+        localStorage.setItem('ld',0);
+        localStorage.setItem('rd',0);
+    }
+    function write(){
+        let data = [];
+        let numElem;
+        let lu = localStorage.getItem('lu');
+        let ru = localStorage.getItem('ru');
+        let ld = localStorage.getItem('ld');
+        let rd = localStorage.getItem('rd');
+        let ch1 = document.getElementById("Checkbox1").checked;
+        let ch2 = document.getElementById("Checkbox2").checked
+        let ch3 = document.getElementById("Checkbox3").checked
+
+       if(lu != null)
+       {
+           
+           data[0] = lu+'px ';
+       }
+       else{
+           data[0]= '0';
+       }
+       if(ru != null)
+       {
+           data[1] = ru + 'px ';
+       }
+       if(ld != null)
+       {
+        if(ru == null)
+        {
+            data[1]= '0';
+        }
+           data[2] = ld + 'px ';
+       }
+       if(rd != null)
+       {
+        if(ld == null)
+        {
+            data[2]= '0';
+        }
+           data[3] = rd + 'px';
+       }
+        let text =  data[0] + data[1] + data[2] + data[3];
+        let code;
+        if(ch1==true)
+        {
+            code = '-webkit-border-radius: '+ text +';\n'
+        }
+        if(ch2==true)
+        {
+            code = code + '-moz-border-radius: '+ text+';\n'
+        }
+        if(ch3==true)
+        {
+            code = code + 'border-radius: ' +text+';';
+        }
+        console.log(code)
+        document.getElementById('code').value = code;
+        document.getElementById('exemple').style.borderRadius=text;
+    }
+    $('.alert').alert()
+    function copy() {
+  /* Get the text field */
+  var copyText = document.getElementById("code");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+
+  /* Alert the copied text */
+  alert("Copied the text: " + copyText.value);
+} 
+</script>
+</body>
+</html>
